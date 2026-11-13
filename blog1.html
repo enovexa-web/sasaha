@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA SAHA CARE - Understanding Down Syndrome: A Guide for Families</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+            overflow-x: hidden;
+            max-width: 100%;
+            line-height: 1.7;
+        }
+
+        .blog-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 30px 100px;
+        }
+
+        .blog-logo { display: inline-block; margin-bottom: 24px; }
+        .blog-logo img { height: 90px; width: auto; display: block; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #5B1268;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        /* Post header */
+        .post-tag {
+            display: inline-block;
+            background: #5B1268;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-meta {
+            font-size: 13px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .post-title {
+            font-size: 42px;
+            line-height: 1.25;
+            color: #1a1a1a;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .post-subtitle {
+            font-size: 19px;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 35px;
+        }
+
+        .post-hero-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 45px;
+        }
+
+        /* Body content */
+        .post-body h2 {
+            font-size: 26px;
+            color: #5B1268;
+            margin-top: 45px;
+            margin-bottom: 18px;
+        }
+
+        .post-body h3 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .post-body p {
+            font-size: 16.5px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .post-body ul,
+        .post-body ol {
+            margin: 0 0 20px 22px;
+            color: #444;
+            font-size: 16.5px;
+        }
+
+        .post-body li {
+            margin-bottom: 10px;
+        }
+
+        .pull-quote {
+            border-left: 4px solid #5B1268;
+            background: #F7EEFA;
+            padding: 24px 28px;
+            border-radius: 0 12px 12px 0;
+            margin: 35px 0;
+            font-size: 19px;
+            font-style: italic;
+            color: #5B1268;
+        }
+
+        .info-box {
+            background: #F7EEFA;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 35px 0;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #5B1268;
+        }
+
+        .info-box ul {
+            margin-bottom: 0;
+        }
+
+        /* CTA */
+        .post-cta {
+            margin-top: 55px;
+            background: linear-gradient(135deg, #5B1268, #8A3A9E);
+            border-radius: 20px;
+            padding: 45px 35px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .post-cta h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .post-cta p {
+            font-size: 15.5px;
+            color: rgba(255,255,255,0.9);
+            max-width: 480px;
+            margin: 0 auto 25px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #fff;
+            color: #5B1268;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Author */
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #5B1268;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 15px;
+        }
+
+        .author-role {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .blog-wrapper {
+                padding: 40px 20px 70px;
+            }
+
+            .post-title {
+                font-size: 30px;
+            }
+
+            .post-subtitle {
+                font-size: 17px;
+            }
+
+            .post-hero-image {
+                height: 240px;
+            }
+
+            .post-body h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blog-wrapper">
+
+        <a href="index.html" class="blog-logo"><img src="logo-nav.png" alt="SA SAHA CARE logo"></a><br>
+        <a href="blogfaq.html" class="back-link">&larr; Back to Blog</a>
+
+        <span class="post-tag fade-up">Down Syndrome Care</span>
+        <div class="post-meta fade-up">17 SEP 2026 &middot; 6 MIN READ</div>
+
+        <h1 class="post-title fade-up">Understanding Down Syndrome: A Guide for Families</h1>
+        <p class="post-subtitle fade-up">What Down syndrome means for development and daily life, and how the right support helps individuals thrive at every stage.</p>
+
+        <img class="post-hero-image fade-up" src="https://images.pexels.com/photos/7943542/pexels-photo-7943542.jpeg" alt="Caregiver supporting a person with Down syndrome">
+
+        <div class="post-body">
+            <p class="fade-up">A Down syndrome diagnosis can bring a wave of questions, especially for families who are hearing about the condition for the first time. What does it mean for development? What kind of support is needed? And what does a full, happy life actually look like? This guide walks through the basics, and how thoughtful, person-centered care makes all the difference.</p>
+
+            <h2 class="fade-up">What Is Down Syndrome?</h2>
+            <p class="fade-up">Down syndrome is a genetic condition that occurs when a person is born with an extra copy of chromosome 21. This additional genetic material affects the way the body and brain develop, leading to a range of physical characteristics and developmental differences. It's one of the most common chromosomal conditions, and no two individuals with Down syndrome are exactly alike &mdash; each person has their own personality, strengths, and pace of growth.</p>
+
+            <div class="pull-quote fade-up">
+                Every individual with Down syndrome has their own abilities, interests, and potential. Care should always start with the person, not the diagnosis.
+            </div>
+
+            <h2 class="fade-up">Common Developmental Considerations</h2>
+            <p class="fade-up">People with Down syndrome often experience mild to moderate delays in areas like speech, motor skills, and cognitive development. Many also have an increased likelihood of certain health conditions, including heart differences, hearing or vision challenges, and low muscle tone. Early, consistent support can make a significant difference in how these areas develop over time.</p>
+
+            <h3 class="fade-up">Areas That Often Benefit From Extra Support</h3>
+            <ul class="fade-up">
+                <li><strong>Communication:</strong> Speech and language therapy helps build vocabulary and confidence in expressing needs.</li>
+                <li><strong>Motor skills:</strong> Physical and occupational therapy strengthen coordination and independence in daily tasks.</li>
+                <li><strong>Social-emotional growth:</strong> Structured social opportunities build friendships and self-esteem.</li>
+                <li><strong>Learning:</strong> Individualized teaching approaches help each person learn at their own pace.</li>
+            </ul>
+
+            <h2 class="fade-up">Building a Supportive Care Plan</h2>
+            <p class="fade-up">The most effective care isn't one-size-fits-all. It starts by understanding an individual's specific needs, strengths, and goals, then building routines around them. This might include help with daily living skills, access to therapies, opportunities for social engagement, and close collaboration with family members so that support at home and support from caregivers stay consistent.</p>
+
+            <div class="info-box fade-up">
+                <h3 class="fade-up">What Good Support Looks Like</h3>
+                <ul class="fade-up">
+                    <li>Personalized routines that respect each person's pace and preferences</li>
+                    <li>Encouragement toward independence in everyday activities</li>
+                    <li>Regular opportunities for social interaction and community involvement</li>
+                    <li>Open communication between caregivers and family</li>
+                    <li>Access to therapy and developmental resources as needed</li>
+                </ul>
+            </div>
+
+            <h2 class="fade-up">Helping Individuals Thrive</h2>
+            <p class="fade-up">With the right environment, people with Down syndrome can lead active, meaningful, and independent lives &mdash; building friendships, developing skills, and participating fully in their communities. The goal of care isn't just to manage challenges, but to create real opportunities for growth, connection, and joy.</p>
+
+            <p class="fade-up">If your family is exploring care options for a loved one with Down syndrome, know that support can be tailored to fit your specific situation. Ask questions, take your time, and look for a care team that treats your loved one as an individual first.</p>
+        </div>
+
+        <div class="post-author fade-up">
+            <div class="author-avatar">SC</div>
+            <div>
+                <div class="author-name">Sa Saha Care Team</div>
+                <div class="author-role">Person-Focused Care Providers</div>
+            </div>
+        </div>
+
+        <div class="post-cta fade-up">
+            <h3>Have Questions About Care Options?</h3>
+            <p>Our team is happy to talk through what support could look like for your loved one, with no pressure and no obligation.</p>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elements = document.querySelectorAll('.fade-up');
+
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry, i) {
+                    if (entry.isIntersecting) {
+                        setTimeout(function () {
+                            entry.target.classList.add('is-visible');
+                        }, i * 60);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            elements.forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
+
+</body>
+</html>

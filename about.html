@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA SAHA CARE - About Us</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5B1268;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #5B1268;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #5B1268;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+            width: 42px;
+            height: 42px;
+            border: 1.5px solid #E3CCEA;
+            border-radius: 50%;
+            background: #fff;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .hamburger:hover {
+            border-color: #5B1268;
+        }
+
+        .hamburger span {
+            width: 16px;
+            height: 2px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active {
+            border-color: #5B1268;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition: opacity 0.35s ease;
+        }
+
+        .mobile-menu-content {
+            position: fixed;
+            top: 0;
+            right: -75vw;
+            width: 75vw;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 80px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active .mobile-menu-content {
+            right: 0;
+        }
+
+        .mobile-menu-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-menu-content ul li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .mobile-menu-content ul li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu-content a {
+            display: block;
+            padding: 14px 2px;
+        }
+
+        .mobile-menu-content a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-content a:hover {
+            color: #5B1268;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            scroll-margin-top: 100px;
+            min-height: calc(100vh - 80px);
+            background: url('herobg.png') center/cover no-repeat;
+            border-radius: 30px;
+            margin: 130px 30px 30px;
+            padding: 60px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 3;
+            color: white;
+            max-width: 600px;
+            margin-top: 200px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #5B1268;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #5B1268;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stethoscope-icon {
+            width: 400px;
+            height: 400px;
+            background: transparent;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .stethoscope-icon svg {
+            width: 250px;
+            height: 250px;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        .service-badge {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            z-index: 3;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .service-badge p {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal-fade {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-fade.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-slide-left {
+            opacity: 0;
+            transform: translateX(-90px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .reveal-slide-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-slide-right {
+            opacity: 0;
+            transform: translateX(90px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .reveal-slide-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* About Section */
+        .about {
+            scroll-margin-top: 100px;
+            padding: 80px 50px;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-tag {
+            color: #5B1268;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-tag::before {
+            content: '●';
+            font-size: 10px;
+        }
+
+        .about h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .about h2 .highlight {
+            color: #1A1A1A;
+        }
+
+        .about-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, #5B1268 0%, #8A3A9E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .feature:hover .feature-icon {
+            transform: rotate(360deg);
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: currentColor;
+        }
+
+        .feature-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .feature-content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Us Intro Section */
+        .about-us-section {
+            scroll-margin-top: 100px;
+            padding: 90px 50px;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-us-image {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .about-us-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 20px 50px rgba(30, 6, 36, 0.15);
+        }
+
+        .about-us-content {
+            flex: 1;
+        }
+
+        .about-us-tag {
+            color: #8A3A9E;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .about-us-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1E0624;
+            line-height: 1.25;
+            margin-bottom: 25px;
+        }
+
+        .about-us-description p {
+            font-size: 15.5px;
+            color: #555;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .about-us-video {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .play-btn {
+            width: 62px;
+            height: 62px;
+            min-width: 62px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5B1268 0%, #8A3A9E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(91, 18, 104, 0.35);
+            transition: transform 0.3s ease;
+            border: none;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .play-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-left: 3px;
+        }
+
+        .about-us-video span {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @media (max-width: 900px) {
+            .about-us-section {
+                flex-direction: column;
+                padding: 60px 25px;
+                gap: 35px;
+            }
+
+            .about-us-content h2 {
+                font-size: 32px;
+            }
+
+            .about-us-image img {
+                height: 320px;
+            }
+        }
+
+        /* NDIS Section */
+        .ndis-section {
+            scroll-margin-top: 100px;
+            padding: 90px 50px;
+            background: #FBF6FC;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px 70px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ndis-content {
+            flex: 1;
+        }
+
+        .ndis-tag {
+            color: #8A3A9E;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .ndis-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1E0624;
+            line-height: 1.25;
+            margin-bottom: 25px;
+        }
+
+        .ndis-content h2 span {
+            color: #5B1268;
+        }
+
+        .ndis-description p {
+            font-size: 15.5px;
+            color: #555;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .ndis-image {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ndis-image img {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            display: block;
+        }
+
+        .ndis-extra {
+            flex-basis: 100%;
+            display: flex;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .ndis-extra-image {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .ndis-extra-image img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: cover;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 20px 50px rgba(30, 6, 36, 0.15);
+        }
+
+        .ndis-extra-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .ndis-extra-text p {
+            font-size: 15.5px;
+            color: #555;
+            line-height: 1.85;
+            padding-left: 22px;
+            border-left: 4px solid #8A3A9E;
+        }
+
+        @media (max-width: 900px) {
+            .ndis-section {
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                padding: 60px 25px;
+                gap: 35px;
+            }
+
+            .ndis-image { order: 1; }
+            .ndis-content { order: 2; }
+            .ndis-extra {
+                order: 3;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 30px;
+            }
+
+            .ndis-content h2 {
+                font-size: 32px;
+            }
+
+            .ndis-image img {
+                max-width: 380px;
+            }
+        }
+
+        /* Mission & Vision Section */
+        .mv-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            padding: 90px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .mv-left {
+            flex: 1;
+            padding-top: 6px;
+        }
+
+        .mv-tabs {
+            display: flex;
+            gap: 45px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 35px;
+        }
+
+        .mv-tab {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 19px;
+            color: #888;
+            padding: 0 0 18px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .mv-tab::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 3px;
+            background: #5B1268;
+            transition: width 0.3s ease;
+        }
+
+        .mv-tab.active {
+            color: #1E0624;
+            font-weight: 600;
+        }
+
+        .mv-tab.active::after {
+            width: 100%;
+        }
+
+        .mv-panel {
+            display: none;
+        }
+
+        .mv-panel.active {
+            display: block;
+            animation: fadeInUp 0.5s ease both;
+        }
+
+        .mv-panel h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1E0624;
+            margin-bottom: 20px;
+        }
+
+        .mv-panel p {
+            font-size: 15.5px;
+            color: #555;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .mv-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .mv-highlights li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15.5px;
+            font-weight: 600;
+            color: #1E0624;
+        }
+
+        .mv-highlights li::before {
+            content: '✓';
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5B1268 0%, #8A3A9E 100%);
+            color: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mv-right {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .mv-right img {
+            width: 100%;
+            height: 380px;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .mv-section {
+                flex-direction: column;
+                padding: 55px 25px;
+                gap: 35px;
+            }
+
+            .mv-right {
+                order: 1;
+                width: 100%;
+            }
+
+            .mv-left {
+                order: 2;
+            }
+
+            .mv-right img {
+                height: 260px;
+            }
+
+            .mv-tabs {
+                gap: 30px;
+            }
+
+            .mv-panel h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* Our Values Section */
+        .values-section {
+            margin: 20px 30px 60px;
+        }
+
+        .values-card {
+            border-radius: 30px;
+            padding: 80px 60px;
+            background: #12041a;
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            isolation: isolate;
+        }
+
+        /* Photo blended into the right side of the card */
+        .values-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 62%;
+            background: url('values-care.png') center 22% / cover no-repeat;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 30%, #000 65%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 30%, #000 65%);
+            z-index: -2;
+        }
+
+        /* Purple tint so the photo sits in the card's colour scheme */
+        .values-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(18, 4, 26, 0.95) 0%, rgba(30, 6, 36, 0.75) 40%, rgba(30, 6, 36, 0.15) 75%, rgba(30, 6, 36, 0.35) 100%);
+            z-index: -1;
+        }
+
+        .values-content {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .values-tag {
+            color: #C48BD6;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .values-tag::before {
+            content: '●';
+            font-size: 10px;
+        }
+
+        .values-card h2 {
+            color: white;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.25;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .values-card h2 .highlight {
+            color: #C48BD6;
+        }
+
+        .values-intro {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+
+        .values-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 30px;
+            max-width: 640px;
+        }
+
+        .values-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .values-list li::before {
+            content: '';
+            width: 9px;
+            height: 9px;
+            min-width: 9px;
+            border-radius: 50%;
+            background: #C48BD6;
+        }
+
+        @media (max-width: 900px) {
+            .values-section {
+                margin: 10px 16px 50px;
+            }
+
+            .values-card {
+                padding: 50px 26px;
+                border-radius: 22px;
+                min-height: 0;
+            }
+
+            .values-card::before {
+                width: 100%;
+                -webkit-mask-image: none;
+                mask-image: none;
+                background-position: center top;
+            }
+
+            .values-card::after {
+                background: linear-gradient(180deg, rgba(18, 4, 26, 0.82) 0%, rgba(18, 4, 26, 0.9) 100%);
+            }
+
+            .values-card h2 {
+                font-size: 30px;
+            }
+
+            .values-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Values card: smoother, shorter slide-in */
+        .values-card .reveal-slide-left,
+        .values-card .reveal-slide-right {
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .values-card .reveal-slide-left { transform: translateX(-60px); }
+        .values-card .reveal-slide-right { transform: translateX(60px); }
+        .values-card .reveal-slide-left.active,
+        .values-card .reveal-slide-right.active { transform: translateX(0); }
+
+        /* How We Care Section (3-step layout) */
+        .care-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 50px 100px;
+            text-align: center;
+        }
+
+        .care-tag {
+            color: #5B1268;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .care-tag::before {
+            content: '';
+            width: 26px;
+            height: 14px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #5B1268 50%, #C48BD6 50%);
+        }
+
+        .care-section h2 {
+            font-size: 46px;
+            font-weight: 700;
+            color: #1E0624;
+            line-height: 1.2;
+            margin-bottom: 70px;
+        }
+
+        .care-section h2 .highlight {
+            color: #5B1268;
+        }
+
+        .care-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .care-step-visual {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 550 / 460;
+            margin: 0 auto 30px;
+        }
+
+        .care-step-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .care-step:hover .care-step-visual img {
+            transform: scale(1.05);
+        }
+
+        .care-step-number {
+            position: absolute;
+            left: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 78px;
+            font-weight: 400;
+            color: #1E0624;
+            line-height: 1;
+        }
+
+        .care-step h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E0624;
+            margin-bottom: 12px;
+        }
+
+        .care-step p {
+            font-size: 16px;
+            color: #6B5A72;
+            line-height: 1.7;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .care-section {
+                padding: 20px 25px 70px;
+            }
+
+            .care-section h2 {
+                font-size: 32px;
+                margin-bottom: 45px;
+            }
+
+            .care-steps {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .care-step-number {
+                font-size: 64px;
+            }
+        }
+
+        /* Call To Action Section */
+        .cta-section {
+            margin: 20px 30px 90px;
+        }
+
+        .cta-card {
+            border-radius: 30px;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #1E0624 0%, #4A0F5A 100%);
+            text-align: center;
+        }
+
+        .cta-tag {
+            color: #C48BD6;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cta-tag::before {
+            content: '●';
+            font-size: 10px;
+        }
+
+        .cta-card h2 {
+            color: white;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.25;
+            max-width: 650px;
+            margin: 0 auto 22px;
+        }
+
+        .cta-description {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-card .btn-primary {
+            padding: 14px 34px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .cta-section {
+                margin: 10px 16px 60px;
+            }
+
+            .cta-card {
+                padding: 55px 25px;
+                border-radius: 22px;
+            }
+
+            .cta-card h2 {
+                font-size: 30px;
+            }
+        }
+
+        /* Why SA SAHA CARE Section */
+        .why-section {
+            background: #12041A;
+            padding: 90px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin: 60px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .why-bg-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .why-bg-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transform: scale(1.12);
+            opacity: 0.55;
+            transition: transform 1.6s ease, opacity 1.6s ease;
+        }
+
+        .why-bg-image.active img {
+            transform: scale(1);
+            opacity: 0.55;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30, 6, 36, 0.8) 0%, rgba(60, 14, 80, 0.7) 55%, rgba(91, 18, 104, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .why-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-tag {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 18px;
+            border-radius: 20px;
+        }
+
+        .why-section h2 {
+            font-size: 56px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .why-section h2 .highlight {
+            color: #C48BD6;
+        }
+
+        .why-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 70px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(196, 139, 214, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services-section {
+            scroll-margin-top: 100px;
+            padding: 90px 50px;
+            text-align: center;
+            background: #F4E9F8;
+        }
+
+        .services-tag {
+            color: #5B1268;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .services-section h2 {
+            font-size: 44px;
+            font-weight: 700;
+            color: #1E0624;
+            margin-bottom: 60px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            box-shadow: 0 10px 30px rgba(42, 8, 51, 0.1);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .service-label {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            padding: 20px 24px;
+        }
+
+        .service-label h3 {
+            color: white;
+            font-size: 19px;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 50px;
+            background: #ffffff;
+        }
+
+        .process-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .process-text {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .process-tag {
+            color: #5B1268;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .process-text h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #1E0624;
+            line-height: 1.25;
+            margin-bottom: 22px;
+        }
+
+        .process-text h2 .highlight {
+            color: #2A0833;
+        }
+
+        .process-description {
+            font-size: 16px;
+            color: #6B2C7C;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 460px;
+        }
+
+        .process-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(42, 8, 51, 0.12);
+        }
+
+        .process-image img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .process-steps {
+            flex: 1.1;
+            min-width: 340px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border: none;
+            border-radius: 22px;
+            padding: 36px 30px;
+            box-shadow: 0 10px 35px rgba(42, 8, 51, 0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(42, 8, 51, 0.14);
+        }
+
+        .step-card.active {
+            background: #ffffff;
+            box-shadow: 0 10px 35px rgba(42, 8, 51, 0.08);
+        }
+
+        .step-number-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            font-size: 38px;
+            font-weight: 800;
+            color: #5B1268;
+        }
+
+        .step-card.active .step-number {
+            color: #5B1268;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: rgba(150, 80, 170, 0.3);
+        }
+
+        .step-card.active .step-line {
+            background: rgba(150, 80, 170, 0.3);
+        }
+
+        .step-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1E0624;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .step-card.active h3 {
+            color: #1E0624;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: #7A3A8C;
+            line-height: 1.6;
+        }
+
+        .step-card.active p {
+            color: #7A3A8C;
+        }
+
+        @media (max-width: 900px) {
+            .process-wrapper {
+                flex-direction: column;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Our Approach Section */
+        .approach-section {
+            position: relative;
+            margin: 60px 30px;
+            border-radius: 30px;
+            overflow: hidden;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+        }
+
+        .approach-image {
+            position: absolute;
+            inset: 0;
+        }
+
+        .approach-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .approach-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(30, 6, 36, 0.88) 0%, rgba(30, 6, 36, 0.6) 45%, rgba(30, 6, 36, 0.05) 75%);
+            z-index: 1;
+        }
+
+        .approach-card {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 50px 45px;
+            margin-left: 60px;
+            max-width: 480px;
+            box-shadow: none;
+        }
+
+        .approach-card h2 {
+            font-size: 40px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 14px;
+        }
+
+        .approach-underline {
+            width: 70px;
+            height: 4px;
+            background: #C48BD6;
+            border-radius: 2px;
+            margin-bottom: 30px;
+        }
+
+        .approach-list {
+            list-style: none;
+        }
+
+        .approach-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 22px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .approach-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .approach-list .arrow {
+            color: #C48BD6;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.6;
+            flex-shrink: 0;
+        }
+
+        /* Contact CTA Bar */
+        .contact-bar {
+            position: relative;
+            margin: 60px 30px;
+            border-radius: 30px;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(120deg, #1E0624 0%, #3E0E52 55%, #5B1268 100%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .contact-bar-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 30px;
+            padding: 45px 55px;
+            flex-wrap: wrap;
+        }
+
+        .contact-bar-text h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .contact-bar-text p {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.92);
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        .contact-bar-action {
+            flex-shrink: 0;
+        }
+
+        .contact-bar-action .btn {
+            padding: 15px 38px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-bar {
+                margin: 40px 16px;
+                border-radius: 20px;
+            }
+
+            .contact-bar-content {
+                padding: 35px 30px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-bar-text h2 {
+                font-size: 26px;
+            }
+
+            .contact-bar-action {
+                width: 100%;
+            }
+
+            .contact-bar-action .btn {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #2A0833 0%, #4A0F5A 100%);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 60px 50px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col-brand {
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo::before {
+            content: '';
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #C48BD6;
+            display: inline-block;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .footer-contact {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-contact li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .footer-col-links h4 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 20px;
+        }
+
+        .footer-col-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-col-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14.5px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col-links a:hover {
+            color: #C48BD6;
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            margin: 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .footer-bottom-links.social {
+            margin-right: auto;
+            margin-left: 60px;
+        }
+
+        .footer-bottom-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #C48BD6;
+        }
+
+        @media (max-width: 700px) {
+            .site-footer {
+                padding: 45px 25px 0;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-bottom-links.social {
+                margin-left: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-logo {
+                font-size: 18px;
+            }
+
+            /* Process section */
+            .process-section {
+                padding: 60px 20px;
+            }
+
+            .process-wrapper {
+                gap: 36px;
+            }
+
+            .process-text {
+                min-width: 0;
+                text-align: center;
+            }
+
+            .process-text h2 {
+                font-size: 30px;
+            }
+
+            .process-description {
+                margin: 0 auto 28px;
+            }
+
+            .process-image {
+                max-width: 420px;
+                margin: 0 auto;
+            }
+
+            .about {
+                flex-direction: column;
+                padding: 50px 20px;
+                gap: 40px;
+            }
+
+            .about h2 {
+                font-size: 32px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .why-section {
+                padding: 60px 20px;
+                margin: 40px 15px;
+            }
+
+            .why-section h2 {
+                font-size: 32px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero {
+                flex-direction: column;
+                margin: 100px 15px 15px;
+                padding: 40px 20px 55px;
+                text-align: center;
+                min-height: calc(100vh - 95px);
+                min-height: calc(100dvh - 95px);
+                justify-content: flex-start;
+                background-position: 90% center;
+                background-size: cover;
+                width: auto;
+            }
+
+            .hero-content {
+                margin-top: 38vh;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+
+            .stethoscope-icon {
+                width: 280px;
+                height: 280px;
+            }
+
+            .stethoscope-icon svg {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .service-badge {
+                position: static;
+                margin-top: 30px;
+            }
+
+            .services-section {
+                padding: 60px 20px;
+            }
+
+            .services-section h2 {
+                font-size: 30px;
+                margin-bottom: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                aspect-ratio: 16 / 11;
+            }
+
+            .approach-section {
+                margin: 40px 15px;
+                min-height: auto;
+                padding: 30px 0;
+            }
+
+            .approach-card {
+                margin: 0 20px;
+                padding: 35px 25px;
+                max-width: none;
+            }
+
+            .approach-card h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ===== SA SAHA CARE logo theme ===== */
+        nav { padding: 10px 50px; transition: padding 0.35s ease; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        nav a.nav-logo::after { display: none; }
+        .nav-logo img { height: 110px; width: auto; display: block; transition: height 0.35s ease; }
+        .nav-logo-text { font-size: 22px; font-weight: 700; letter-spacing: 1.5px; color: #5B1268; white-space: nowrap; }
+        nav.scrolled { padding: 8px 50px; }
+        nav.scrolled .nav-logo img { height: 85px; }
+        nav.scrolled ul { padding: 12px 40px; }
+        .footer-logo::before { display: none; }
+        .site-footer .footer-logo { flex-direction: column; align-items: flex-start; gap: 10px; }
+        .footer-logo img { height: 110px; width: auto; filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
+        .footer-brand-name { font-size: 22px; font-weight: 700; letter-spacing: 1px; color: #fff; }
+        @media (max-width: 1024px) { nav { padding: 10px 30px; } nav.scrolled { padding: 8px 30px; } }
+        @media (max-width: 768px) {
+            nav { padding: 10px 20px; } nav.scrolled { padding: 8px 20px; }
+            .nav-logo img { height: 80px; } nav.scrolled .nav-logo img { height: 65px; }
+            .nav-logo-text { font-size: 15px; letter-spacing: 1px; }
+            .footer-logo img { height: 80px; }
+        }
+
+        /* ===== Full-width hero (no boxed card) ===== */
+        .hero {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            min-height: 100vh !important;
+            scroll-margin-top: 0 !important;
+            padding-top: 140px !important;
+            padding-left: 60px !important;
+            padding-right: 60px !important;
+        }
+        .hero::before { border-radius: 0 !important; }
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 100vh !important;
+                min-height: 100dvh !important;
+                padding-top: 100px !important;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+        /* Hero background image with slow zoom + drift */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('https://images.pexels.com/photos/8415561/pexels-photo-8415561.jpeg') center/cover no-repeat;
+            will-change: transform;
+            backface-visibility: hidden;
+            animation:
+                heroBgFadeIn 1.8s ease-out both,
+                heroSlowZoom 28s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroBgFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes heroSlowZoom {
+            0%   { transform: scale(1)    translate3d(0, 0, 0); }
+            100% { transform: scale(1.18) translate3d(-1.5%, -1%, 0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-bg { animation: none; }
+        }
+        /* Hero text: fade up (container and background stay fixed, so no white gap) */
+        .hero-content h1,
+        .hero-content p {
+            animation: heroTextFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .hero-content h1 { animation-delay: 0.2s; }
+        .hero-content p  { animation-delay: 0.5s; }
+
+        @keyframes heroTextFadeUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content h1, .hero-content p { animation: none; }
+        }
+    
+        /* Top info bar (phone + address) - slides away on scroll, returns at top */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: 36px;
+            padding: 0 50px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 28px;
+            background: transparent;
+            color: #fff;
+            font-size: 13px;
+            z-index: 1001;
+            transition: transform 0.35s ease;
+        }
+        .top-bar a { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .top-bar a::after { display: none; }
+        .top-bar span { display: inline-flex; align-items: center; gap: 6px; }
+        nav { top: 36px; transition: padding 0.35s ease, top 0.35s ease; }
+        body.scrolled-down .top-bar { transform: translateY(-100%); }
+        body.scrolled-down nav { top: 0; }
+        @media (max-width: 768px) {
+            .top-bar { padding: 0 20px; gap: 14px; font-size: 11px; height: 30px; }
+            nav { top: 30px; }
+            body.scrolled-down nav { top: 0; }
+        }
+    
+        /* Footer contact section with icons */
+        .footer-col-contact h4 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 20px;
+            padding-bottom: 0;
+            position: static;
+        }
+        .footer-col-contact h4::after { display: none; }
+        .footer-contact-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 0; max-width: 280px; }
+        .footer-contact-list li { display: flex; align-items: center; gap: 14px; font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.5; }
+        .footer-contact-list a { color: inherit; text-decoration: none; font-size: 14.5px; font-weight: 400; transition: color 0.3s ease; }
+        .footer-contact-list a:hover { color: #C48BD6; }
+        .footer-contact-list .fc-icon { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; background: #C48BD6; display: flex; align-items: center; justify-content: center; }
+        .footer-contact-list .fc-icon svg { width: 18px; height: 18px; fill: #2A0833; }
+    
+
+    
+
+        /* Mobile: keep logo, name, phone & address from overlapping the open menu */
+        @media (max-width: 768px) {
+            .top-bar { justify-content: space-between; white-space: nowrap; gap: 8px; padding: 0 12px; font-size: 10px; transition: transform 0.35s ease, opacity 0.25s ease; }
+            .nav-logo { display: flex; align-items: center; gap: 6px; min-width: 0; }
+            .nav-logo-text { transition: opacity 0.2s ease; }
+            .mobile-menu-content { padding-top: 110px; }
+            body.menu-open .top-bar { opacity: 0; pointer-events: none; }
+            body.menu-open .nav-logo-text { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top info bar -->
+    <div class="top-bar">
+        <a href="tel:+910000000000">&#128222; +91 00000 00000</a>
+        <span>&#128205; Prospect, SA 5082</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-logo"><img src="logo-nav.png" alt="SA SAHA CARE logo"><span class="nav-logo-text">SA SAHA CARE</span></a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="ourteam.html">Our Team</a></li>
+            <li><a href="blogfaq.html">Blog/FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <ul>
+                <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="services.html" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="ourteam.html" onclick="closeMobileMenu()">Our Team</a></li>
+                <li><a href="blogfaq.html" onclick="closeMobileMenu()">Blog/FAQ</a></li>
+                <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" style="background: #1a0a20;">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Who We Are</h1>
+            <p>Meet the people behind SA SAHA CARE and the mission that drives every visit, every plan, and every moment of support we provide.</p>
+        </div>
+
+        <div class="hero-image">
+            <div class="stethoscope-icon">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="30" r="12" fill="none" stroke="white" stroke-width="3"/>
+                    <circle cx="140" cy="30" r="12" fill="none" stroke="white" stroke-width="3"/>
+                    <path d="M 60 42 Q 60 80 100 90" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M 140 42 Q 140 80 100 90" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M 100 90 Q 100 130 100 160" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="100" cy="175" r="18" fill="none" stroke="white" stroke-width="3"/>
+                    <circle cx="100" cy="175" r="14" fill="none" stroke="white" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- About Us Intro Section -->
+    <section class="about-us-section" id="about-us">
+        <div class="about-us-image reveal-slide-left">
+            <img src="abt01.png" alt="A Sa Saha Care support worker smiling with two clients with Down syndrome">
+        </div>
+        <div class="about-us-content">
+            <div class="about-us-tag reveal-fade">About Us</div>
+            <h2 class="reveal-fade" style="transition-delay: 0.1s;">Welcome to <span>SA SAHA CARE</span></h2>
+            <div class="about-us-description reveal-fade" style="transition-delay: 0.2s;">
+                <p>At Sa Saha Care, we are committed to providing compassionate, respectful, and personalized care for individuals with Down syndrome. We believe every individual is unique, with their own abilities, interests, personality, and potential.</p>
+                <p>Our goal is to create a safe, welcoming, and inclusive environment where individuals can feel valued, supported, and confident. Through personalized care, engaging activities, skill development, social interaction, and continuous encouragement, we help individuals build greater independence and enjoy a meaningful quality of life.</p>
+                <p>At Sa Saha Care, we also believe that families and caregivers are an important part of the care journey. We work together with families to understand individual needs and provide consistent support and guidance.</p>
+                <p>We care with compassion, support with understanding, and help every individual grow with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NDIS Section -->
+    <section class="ndis-section" id="ndis">
+        <div class="ndis-content">
+            <div class="ndis-tag reveal-fade">NDIS Support</div>
+            <h2 class="reveal-fade" style="transition-delay: 0.1s;">Disability Support Services with <span>Dignity &amp; Independence</span></h2>
+            <div class="ndis-description reveal-fade" style="transition-delay: 0.2s;">
+                <p>At Sa Saha Care, we are committed to providing compassionate, personalized, and high-quality disability support services that empower individuals to live with dignity, confidence, and independence. Our dedicated team focuses on creating a safe, supportive, and inclusive environment where every individual feels valued, respected, and cared for.</p>
+                <p>We understand that every person has unique needs and abilities. Our services are designed to support individuals across different stages of life, helping them achieve their personal goals, develop everyday living skills, and enjoy a more fulfilling life. Through a person-centred approach, we strive to deliver care that reflects each individual's preferences, aspirations, and support requirements.</p>
+            </div>
+        </div>
+        <div class="ndis-image reveal-slide-right">
+            <img src="ndis-support.png" alt="A support worker and a participant in a wheelchair smiling together" loading="lazy">
+        </div>
+        <div class="ndis-extra">
+            <div class="ndis-extra-image reveal-slide-left">
+                <img src="ndis-care.webp" alt="A support worker caring for a participant at home" loading="lazy">
+            </div>
+            <div class="ndis-extra-text">
+                <p class="reveal-fade">Our services include disability support, Supported Independent Living (SIL), Short-Term Accommodation (STA), and personalized assistance tailored to individual needs. We work closely with participants, families, and support networks to ensure that the right care and assistance are available when needed.</p>
+                <p class="reveal-fade" style="transition-delay: 0.15s;">At Sa Saha Care, we believe that everyone deserves the opportunity to participate in their community and experience greater independence. Our goal is to build meaningful relationships, encourage personal growth, and make a positive difference in the lives of the individuals and families we support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mv-section" id="mission-vision">
+        <div class="mv-left reveal-slide-left">
+            <div class="mv-tabs">
+                <button class="mv-tab active" data-tab="mission">Our Mission</button>
+                <button class="mv-tab" data-tab="vision">Our Vision</button>
+            </div>
+
+            <div class="mv-panel active" data-panel="mission">
+                <p>At Sa Saha Care, we provide compassionate, personalized care that helps individuals with Down syndrome develop confidence, independence, and essential life skills. We create a safe and inclusive environment where every individual feels respected, valued, and supported.</p>
+                <ul class="mv-highlights">
+                    <li>Personalized Care &amp; Development</li>
+                    <li>Safe, Inclusive &amp; Family-Centered Support</li>
+                </ul>
+            </div>
+
+            <div class="mv-panel" data-panel="vision">
+                <p>Our vision is to create an inclusive community where individuals with Down syndrome have the opportunity to learn, grow, connect, and live happy and fulfilling lives. We believe every individual deserves dignity, acceptance, and the opportunity to reach their unique potential.</p>
+                <ul class="mv-highlights">
+                    <li>Empowering Individuals to Thrive</li>
+                    <li>Building an Inclusive &amp; Supportive Community</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mv-right reveal-slide-right" style="transition-delay: 0.15s;">
+            <img src="mission-vision.png" alt="A caregiver handing a warm cup to a smiling senior in a wheelchair" loading="lazy">
+        </div>
+    </section>
+
+    <!-- How We Care Section -->
+    <section class="care-section">
+        <div class="care-tag reveal-fade">Our Approach</div>
+        <h2 class="reveal-fade" style="transition-delay: 0.1s;">How We <span class="highlight">Care</span></h2>
+        <div class="care-steps">
+            <div class="care-step reveal-fade">
+                <div class="care-step-visual">
+                    <img src="care-step-1.png" alt="A support worker helping a person using a walking frame" loading="lazy">
+                    <span class="care-step-number">1</span>
+                </div>
+                <h3>Personalized Care Plans</h3>
+                <p>Every plan is built around the person, focusing on individual needs, preferences, and goals.</p>
+            </div>
+            <div class="care-step reveal-fade" style="transition-delay: 0.15s;">
+                <div class="care-step-visual">
+                    <img src="care-step-2.png" alt="A support worker pushing a person in a wheelchair" loading="lazy">
+                    <span class="care-step-number">2</span>
+                </div>
+                <h3>Skill Development</h3>
+                <p>Engaging activities and steady encouragement help build independence and everyday living skills.</p>
+            </div>
+            <div class="care-step reveal-fade" style="transition-delay: 0.3s;">
+                <div class="care-step-visual">
+                    <img src="care-step-3.png" alt="A support worker standing beside a seated person reading a book" loading="lazy">
+                    <span class="care-step-number">3</span>
+                </div>
+                <h3>Social &amp; Emotional Support</h3>
+                <p>Social interaction and caring companionship help every individual feel connected and valued.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values-section">
+        <div class="values-card">
+            <div class="values-content">
+            <div class="values-tag reveal-slide-left">Our Values</div>
+            <h2 class="reveal-slide-left" style="transition-delay: 0.1s;">The Principles That <span class="highlight">Guide Our Care</span></h2>
+            <p class="values-intro reveal-slide-left" style="transition-delay: 0.2s;">Everything we do at Sa Saha Care is rooted in a simple set of beliefs about how people deserve to be treated and supported.</p>
+            <ul class="values-list">
+                <li class="reveal-slide-left" style="transition-delay: 0.3s;">Compassion</li>
+                <li class="reveal-slide-right" style="transition-delay: 0.3s;">Dignity &amp; Respect</li>
+                <li class="reveal-slide-left" style="transition-delay: 0.45s;">Inclusion</li>
+                <li class="reveal-slide-right" style="transition-delay: 0.45s;">Empowerment</li>
+                <li class="reveal-slide-left" style="transition-delay: 0.6s;">Independence</li>
+                <li class="reveal-slide-right" style="transition-delay: 0.6s;">Family Support</li>
+            </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action Section -->
+    <section class="cta-section">
+        <div class="cta-card reveal-fade">
+            <div class="cta-tag">Get In Touch</div>
+            <h2>Let's Build a Brighter Future Together</h2>
+            <p class="cta-description">Whether you're exploring care options for a loved one or ready to get started, our team is here to listen and help every step of the way.</p>
+            <a href="contact.html" class="btn btn-primary" style="text-decoration: none;">Contact Us</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col-brand">
+                <div class="footer-logo"><img src="logo.png" alt="SA SAHA CARE logo"><span class="footer-brand-name">SA SAHA CARE</span></div>
+                <p class="footer-desc">A person-focused care provider where experienced support workers meet compassionate, modern healthcare.</p>
+            </div>
+            <div class="footer-col-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>  
+                    <li><a href="ourteam.html">Our Team</a></li>
+                    <li><a href="blogfaq.html">Blog/FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-links">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="services.html">Daily Personal Activities</a></li>
+                    <li><a href="services.html">Travel and Transport</a></li>
+                    <li><a href="services.html">Group/Shared Living</a></li>
+                    <li><a href="services.html">Community Participation</a></li>
+                    <li><a href="services.html">Accommodation Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-contact">
+                <h4>Contact</h4>
+                <ul class="footer-contact-list">
+                    <li><span class="fc-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><a href="tel:+18005551234">+1 (800) 555-1234</a></li>
+                    <li><span class="fc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span><a href="mailto:care@sasahacare.com">care@sasahacare.com</a></li>
+                    <li><span class="fc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg></span><span>Mon - Fri : 9:00 - 17:00 hrs.</span></li>
+                    <li><span class="fc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/></svg></span><span>Prospect, SA 5082</span></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>&copy; 2026 SA SAHA CARE. All rights reserved.</p>
+            <ul class="footer-bottom-links social">
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+            </ul>
+            <ul class="footer-bottom-links">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
+        });
+
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+
+        // Shrink nav on scroll, restore at top
+        const siteNav = document.querySelector('nav');
+        function updateNav() { siteNav.classList.toggle('scrolled', window.scrollY > 40); document.body.classList.toggle('scrolled-down', window.scrollY > 40); }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Scroll reveal animations: image slide-in + fade-up top to bottom
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        document.querySelectorAll('.reveal-fade, .reveal-slide-left, .reveal-slide-right')
+            .forEach(el => revealObserver.observe(el));
+
+        // Mission & Vision tab switching
+        const mvTabs = document.querySelectorAll('.mv-tab');
+        const mvPanels = document.querySelectorAll('.mv-panel');
+
+        mvTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const target = this.dataset.tab;
+
+                mvTabs.forEach(t => t.classList.remove('active'));
+                mvPanels.forEach(p => p.classList.remove('active'));
+
+                this.classList.add('active');
+                document.querySelector('.mv-panel[data-panel="' + target + '"]').classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
